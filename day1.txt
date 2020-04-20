@@ -1,0 +1,408 @@
+7 AM IST to 3 PM IST
+=================================
+Lunch break - 10:30 am ist - 11:30 am ist
+https://savvytime.com/converter/myt-to-ist
+
+Demo - AWS
+Lab - AWS
+===================================
+1 2 3 4 5 6 7 
+================================
+Rajesh Kumar
+=======================
+www.RajeshKumar.xyz
+==============================
+www.DevOpsSchool.com
+==============================
+Why we are learning all new tools and tech?
+===========================================================================
+			RUNNING APP
+=================INTERNET===========================================================
+DISTRIBUTED ===> Centralized => Centralized =>	 
+PHYSICAL ----> Vitualization -> Container
+WATERFALL ---> Agile --> DevOps --> DevSecOps
+MONOLTH ====>  SOA ====> Microservices
+
+===================OBJECTIVE==========================
+	--> Reduce App running/dev Cost?
+	--> Immediate release
+	--> Quality of Soft to be improved
+ 	--> Scalabilility
+========================================================
+DevOps -
+https://www.devopsschool.com/videos/387/complete-cicd-devops-implementation-from-scratch-using-
+
+jenkins-by-devopsschool/
+==================================================================
+Where container are placed in SDLC?
+===================================
+		Containers are for running app - faster - cheaper - shareable
+		- Dev
+		- QA
+		- Prod
+======================================================
+SDLC
+==========================
+	Plan --> Jira- Confluence
+	Design -> Trello - 
+	Coding - IDE + GIT
+	Analyze - SonarQube
+	Build - Maven
+	UT - Junit
+	Pack - Jar
+	Archive - Nexus
+	Dep2QA - Ansible
+	AT 	- Selenium
+	CC	- jacoco
+	Dep2PrePr - Ansible
+	Dep2Prod Ansible - Kubernetes
+	Monitoring
+		Log - ELK
+		perf  - newRelic
+		infra - Datadog
+		security - splunk
+
+https://www.devopsschool.com/path
+================================================================================
+What is Docker?
+	Container mgmt tool
+	-------   ---   ----
+	Platform
+	Written in GOlang
+	Solomon hyke - 2018 resigned from docker.
+	release version
+		Docker CE - Community Ed - FREE
+		Docker EE - Ent Ed - PAID
+	CE VS EE
+	==============
+	https://www.devopsschool.com/blog/difference-between-docker-community-edition-ce-vs-docker-
+
+enterprise-edition-ee-in-2020/
+
+What is def tool?
+	-----
+	to save cost
+	saving time
+	improve efff.
+mgmt 
+	Container(S)
+
+What is Container??
+===============================================
+	Container is lightweight app run time env.
+
+	A container is a standard unit of software that packages up code and all its dependencies so 
+
+the application runs quickly and reliably from one computing environment to another. ... Available for 
+
+both Linux and Windows-based applications, containerized software will always run the same, regardless 
+
+of the infrastructure.
+
+	Containers are 
+			user space
+					with thrir own
+					- Mount
+					- net 
+					- Process map
+
+ITS ALL ABOUT A STORY OF RUNNING APP?
+=================================================
+How You run APP?
+======================================
+
+What are the component required to run app?
+==========================================
+PORT 		=> OS
+Filesystem	=> OS
+Process ID	=> OS
+USER SPACE	=> OS
+
+
+Physical Machine	==> VIRTUAL MACHINE
+1			100 PS
+===========================	
+1   --------------------> 100 APP	
+	
+Why you run APPLICATION in multiple machine than ONE?
+=================================================
+Availabaility
+Scalibility 
+Security
+Isolation
+=================================
+PICK UTLi 
+---C - R H
+
+==========================================
+Why we migrated to PS - > VS
+========================================
+Avoid a wastage of 		
+		CPU
+		RAM
+		Storage
+===================================================
+PORT 		=> OS => KERNAL => Namespace => NET
+Filesystem	=> OS => KERNAL => Namespace => MNT
+Process ID	=> OS => KERNAL => Namespace => PMAP
+USER SPACE	=> OS => KERNAL => Namespace => USER
+===================================================
+WHAT IS PC?
+a personal computer.
+	KERNAL => Namespace => NET ---> 1
+	KERNAL => Namespace => MNT ---> 1
+	KERNAL => Namespace => PMAP---> 1
+	KERNAL => Namespace => USER --> INFINTY
+===========================================
+SOLOMON HYKES
+
+
+
+How container gets CPU + RAM allocation?
+======================================
+KERNAL => CGROUPS
+
+
+WHat COntainer AKA user woudl have what kind of ACCESS?
+===========================================================
+KERNAL => CAPABILITY
+========================================================================
+HARDWARE
+	KERANAL (OS)
+			NAMESPACE`
+				- NET
+				- MNT
+				- PMAP
+				- USER
+			CGROUPS
+				RAM
+				CPU
+				DISK IO
+				NET IO
+			CAPABILITY
+				PERMISSION
+===============================================================
+
+If there is only one Kernal how docker can manager to get multiple Mounts, NETs and PMAPS?
+================================================================
+Kernal = Sets of Lib(Namespace)
+		lib1- NET
+		lib2 - PMAP
+		lib3 - MNT
+		lib3 - usr
+
+-================================
+CLASS
+
+		instantiation 
+					OBJECT1
+					OBJECT2
+					OBJECT3
+=======================================================================================
+=======================================================================================
+How to install Docker?
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-
+
+rhel.html
+
+3.6.160.191
+	ANY PLATFORM
+			KERNAL
+				PM
+				VM
+	2 KERNAL
+	LINUX - UB - RD - CE - F - D - H - AM 
+	WINDOWS - 2010 16 29 20
+	DOCKER NEED ROOT or A user who is part of group called "docker"
+
+   1  clear
+    2  clear
+    3  ls
+    4  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    5  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    6  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    7  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+    8  sudo yum install -y docker-ce
+    9  docker -v
+   10  sudo systemctl enable docker
+   11  sudo systemctl start docker
+   12  ps -eaf | grep docker
+   13  clear
+   14  which docker
+   15  ps -eaf | grep docke
+   16  clear
+   17  docker version
+   18  clear
+   19  docker help
+   20  clear
+   21  docker info
+   22  clear
+   23  history
+
+
+
+What is Docker Components?
+- Docker Engine
+	human-> docker client --> RESTAPI -> Docker Deamon -> ContainerD -> RUNC -> KERNAL
+- Docker Image
+	ISO -> VM
+	OS
+	========================
+	FILESYSTEM
+	BOOTFS -> ROOTFS -> APPFS
+
+	Docker Image
+	=====================
+	ROOTFS -> APPFS
+	FROM IMAGE - You get Container.
+`	You see inside a container - What you in image.
+	From image image - You can create N number of container.
+
+
+- Docker Registry/repos
+	Registry --> Repos --> ONE IMAGE
+					Multiple version
+	
+	PUB REGISTRY
+			https://hub.docker.com/
+			https://cloud.google.com/container-registry
+	PVT REGUSTRY
+			SonaType Nexus
+			Jfrog Artifactory
+	
+- Docker Container
+
+	Containers are 
+			user space
+					with thrir own
+					- Mount
+					- net 
+					- Process map -0 - 1 -----
+
+  PID TTY          TIME CMD
+ 9658 pts/0    00:00:00 sudo
+ 9659 pts/0    00:00:00 bash => 9658 => 9639 => 9638 => 9635 => 1305 => 1 =>0
+
+11065 => 10730 => 1 
+
+ 28  ps -eaf
+   29  clear
+   30  which SHELL
+   31  echo $SHELL
+   32  clear
+   33  ps -eaf
+   34  clear
+   35  ps -eaf
+   36  clear
+   37  ps -eaf
+   38  clear
+   39  clear
+   40  ls
+   41  ps -eaf
+   42  clear
+   43  ps -eaf | grep 9659
+   44  ps -eaf | grep 9658
+   45  ps -eaf | grep 9639
+   46  ps -eaf | grep 9638
+   47  ps -eaf | grep 9635
+   48  ps -eaf | grep 1305
+   49  ps -eaf | grep 1
+   50  lea
+   51  clear
+   52  ps -eaf
+   53  clear
+   54  exit
+   55  clear
+   56  exit
+   57  docker run -itd ubuntu
+   58  clear
+   59  ls
+   60  docker ps
+   61  ps -eaf | grep 68e5c3ef6f73
+   62  clear
+   63  ps -eaf | grep 10730
+   64  clear
+   65  ls
+   66  docker run -itd ubuntu
+   67  docker ps
+   68  clear
+   69  ls
+   70  docker ps
+   71  docker exec b7ae07d1778f df -kh
+   72  docker exec 68e5c3ef6f73 df -kh
+   73  clear
+   74  ls
+   75  docker exec b7ae07d1778f touch /opt/rajesh1
+   76  docker ps
+   77  docker exec 68e5c3ef6f73 touch /opt/rajesh2
+   78  clear
+   79  ls
+   80  docker exec 68e5c3ef6f73 ls /opt
+   81  docker ps
+   82  docker exec b7ae07d1778f ls /opt
+   83  clear
+   84  ls
+   85  docker ps
+   86  docker inspect b7ae07d1778f | grep -i ip
+   87  docker inspect b7ae07d1778f | grep -i ip
+   88  docker ps
+   89  clear
+   90  docker ps
+   91  docker inspect b7ae07d1778f | grep -i ip
+   92  docker inspect 68e5c3ef6f73 | grep -i ip
+   93  clear
+   94  ps -eaf
+   95  clear
+   96  docker ps
+   97  docker exec b7ae07d1778f ps -eaf
+   98  docker exec 68e5c3ef6f73 ps -
+
+
+
+
+3.6.160.191
+
+muralidhar reddy	13.233.158.140
+Jeanne Denice Damasco	35.154.203.251
+jesse Kanth Nannepaga	15.206.187.180
+Farah Atikah		15.206.165.176
+Baharul Islam Mazumder	13.127.148.197
+SESHASAI BHOOTADI	35.154.8.86
+Anasua Chatterjee	3.7.68.212
+Vikas Bhatt		13.232.162.95
+Arun Kumar		13.232.14.128
+Neha Bhargava		15.206.174.98
+Wasim Alhamdan		13.232.148.217
+Chanheun Jeon		52.66.247.23
+Nirbhay Rastogi		13.233.117.101
+Roham Zaferanlo		52.66.251.175
+Niteesh Rao		13.233.163.45
+Paul Cardamone		13.232.207.162
+Bommisetty Venkata Kamakshi Siva Prasad	52.66.114.157
+Ramachandra Rao Rayi	13.232.128.224
+Diana Gonzales		3.6.126.83
+Yerpula Bharath Bhushan Reddy	3.7.71.138
+Aryell			13.233.2.130
+Hisao		35.154.66.23
+13.232.229.154
+
+user name - 
+ec2-user
+PPK -
+https://www.devopsschool.com/notes/docker/2019/
+rajesh-mumbai.ppk
+
+PUTTY
+https://www.devopsschool.com/blog/how-to-login-linux-server-of-aws-from-windows-using-putty/
+Step 4 
+Step 5 
+Step 6 
+
+What is Docker Workflow?
+
+
+What is Container WORKflow?
+
+
+
+
