@@ -383,8 +383,8 @@ Ramachandra Rao Rayi	13.232.128.224
 Diana Gonzales		3.6.126.83
 Yerpula Bharath Bhushan Reddy	3.7.71.138
 Aryell			13.233.2.130
-Hisao		35.154.66.23
-13.232.229.154
+Hisao			35.154.66.23
+Albert 			13.232.229.154
 
 user name - 
 ec2-user
