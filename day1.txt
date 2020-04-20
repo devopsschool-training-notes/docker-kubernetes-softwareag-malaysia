@@ -399,9 +399,178 @@ Step 5
 Step 6 
 
 What is Docker Workflow?
+================================================
+human-> docker client --> RESTAPI -> Docker Deamon -> ContainerD -> RUNC -> KERNAL
 
-
+human-> docker pull image> docker client --> RESTAPI -> Docker Deamon
+							Will check
+							Local Repo(/var/lib/docker)
+								IF THERE - DO REST
+								IF NOT THERE - 
+									Download repo from registry
+									
+		
 What is Container WORKflow?
+================================================
+VMs WORKflow?
+===========================
+create -> start -> stop -> start -> restart -> pause -> unpause -> kill -> remove
+================================================================================
+RUN = PULL + CREATE + START + BECOME
+				- Your shell would become a CONTAINER.
+docker run jenkins
+===============================
+DO NOT BECOME
+RUN = PULL + CREATE + START + DO NOT BECOME
+docker run -d jenkins
+
+ 112  clear
+  113  clear
+  114  docker pull jenkins
+  115  clear
+  116  docker images
+  117  docker mysql
+  118  docker pull mysql
+  119  clear
+  120  docker images
+  121  docker ps
+  122  docker stop b7ae07d1778f 68e5c3ef6f73
+  123  docker ps
+  124  docker ps -a
+  125  docker rm  b7ae07d1778f 68e5c3ef6f73
+  126  clear
+  127  docker ps -a
+  128  docker ps
+  129  docker ps -a
+  130  clear
+  131  docker create jenkins
+  132  docker ps
+  133  docker ps -a
+  134  docker start 01a7d1907223
+  135  docker ps
+  136  docker ps -a
+  137  clear
+  138  docker stop 01a7d1907223
+  139  docker ps -a
+  140  docker start 01a7d1907223
+  141  docker ps -a
+  142  clear
+  143  docker ps -a
+  144  docker restart 01a7d1907223
+  145  docker ps -a
+  146  docker pause 01a7d1907223
+  147  docker ps -a
+  148  clear
+  149  docker unpause 01a7d1907223
+  150  docker ps -a
+  151  docker kill 01a7d1907223
+  152  docker ps -a
+  153  docker rm 01a7d1907223
+  154  docker ps -a
+  155  history
+
+
+FROM IMAGE - Which image?
+https://hub.docker.com/
+docker pull jenkins
+
+IMPORTANCE OF PID 1
+========================
+PM 	---> 		VM 			Container
+=========================================================
+RUNNING			RUNNING			RUNNING
+IF and Only IF		IF and Only IF		IF and Only IF
+PID 1 is running.	PID 1 is running.	PID 1 is running.
+
+PID 1 is		PID 1 is		PID 1 is
+systemd			systemd			ANYTHING
+
+
+=============================================================
+How to use container?
+===========================================
+1. You go inside a container?
+-----------------------------------
+- exec 
+	- Will execute an executable inside a container and return.
+		BUT with -it and shell - you can go inside it.
+	
+- attach
+	- Will get an attached to a terminal of PID 1 of container.
+
+   64  docker exec 41c0648494c0 ps -eaf
+   65  clear
+   66  ps -eaf
+   67  clear
+   68  ps -eaf
+   69  clear
+   70  clear
+   71  docker ps
+   72  dcoker run -itd ubunut
+   73  docker run -itd ubunut
+   74  docker run -itd ubuntu
+   75  docker ps
+   76  clear
+   77  docker ps
+   78  ps -eaf
+   79  clar
+   80  clear
+   81  clear
+   82  ls
+   83  docker ps
+   84  clear
+   85  docker ps
+   86  docker exec a1b90240892f ls
+   87  docker exec a1b90240892f df -kh
+   88  clear
+   89  docker exec a1b90240892f df -kh
+   90  docker exec a1b90240892f top
+   91  docker exec a1b90240892f ps
+   92  docker exec a1b90240892f ps -eaf
+   93  docker exec a1b90240892f ls /opt
+   94  docker exec a1b90240892f ls /etc
+   95  clear
+   96  docker ps
+   97  clear
+   98  docker ps
+   99  docker exec -it a1b90240892f /bin/bash
+  100  clear
+  101  docker ps
+  102  clear
+  103  docker ps
+  104  docker attach a1b90240892f
+  105  docker ps
+  106  c;ear
+  107  clear
+  108  docker p
+  109  docker ps
+  110  docker attach 41c0648494c0
+  111  docker ps -a
+  112  clear
+  113  docker ps -a
+  114  clear
+  115  docker ps
+  116  docker attach a1b90240892f
+  117  docker ps
+  118  docker ps -a
+  119  history
+
+
+2. Access from outside on http and do somthing.
+docker run -d jenkins 	#without expose
+docker run -d -p 8080:8080 jenkins	#with expose
+docker run -d -p 8090:8080 jenkins	#with expose
+
+
+
+How to come out of a contaiener without killing?
+- CNNRl + P + Q
+
+
+
+
+
+
 
 
 
