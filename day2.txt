@@ -1,0 +1,122 @@
+Day 2
+========================================
+52.66.251.186
+=========================
+https://www.devopsschool.com/tutorial/docker/commands/
+
+a
+diff
+	added
+	updated
+	deleted
+
+https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd
+https://forums.docker.com/t/connecting-via-unix-socket-to-the-docker-daemon/17396/3
+
+
+ 308  ls
+  309  touch devopsschool.txt
+  310  ls
+  311  vi devopsschool.txt
+  312  more devopsschool.txt
+  313  ls
+  314  docker ps
+  315  docker cp devopsschool.txt 9db7cf7919c5:/opt
+  316  clear
+  317  docker ps
+  318  docker exec 9db7cf7919c5 ls /opt/
+  319  docker exec 9db7cf7919c5 more /opt/devopsschool.txt
+  320  clear
+  321  ls
+  322  ls
+  323  rm -rf devopsschool.txt
+  324  ls
+  325  docker cp 9db7cf7919c5:/opt/devopsschool.txt .
+  326  ls
+  327  more devopsschool.txt
+  328  clear
+  329  docker ps
+  330  docker attach 9db7cf7919c5
+  331  clear
+  332  ls
+  333  docker ps
+  334  docker diff 9db7cf7919c5
+  335  clear
+  336  docker ps
+  337  docker port 9db7cf7919c5
+  338  docker run -d -p 8080:8080 jenkins
+  339  docker ps
+  340  docker port f06e9c589d3d
+  341  clear
+  342  docker ps
+  343  docker rename f06e9c589d3d dev2
+  344  docker ps
+  345  clear
+  346  ls
+  347  docker run -itd --name dev3 ubuntu
+  348  docker ps
+  349  clear
+  350  docker help run
+  351  clear
+  352  ls
+  353  docker help
+  354  clear
+  355  docker ps
+  356  docker exec -it f06e9c589d3d /bin/bash
+  357  clear
+  358  ls
+  359  docker ps
+  360  docker attach 7acdc2f96b51
+  361  clear
+  362  clear
+  363  docker ps
+  364  docker logs 7acdc2f96b51
+  365  docker logs f06e9c589d3d
+  366  clear
+  367  ls
+  368  docker ps
+  369  docker help ps
+  370  clear
+  371  clear
+  372  docker ps
+  373  docker stats
+  374  docker stats 7acdc2f96b51
+  375  clear
+  376  docker ps
+  377  clear
+  378  ps -eaf | grep docker
+  379  cleatr
+  380  clear
+  381  docker ps
+  382  docker top 7acdc2f96b51
+  383  cler
+  384  clear
+  385  docker events
+  386  clear
+  387  docker images
+  388  clear
+  389  docker info
+  390  clear
+  391  history
+293  docker help start
+  294  docker help run
+  295  clear
+  296  docker help create
+  297  clear
+  298  ls
+  299  clear
+  300  docker run -itd ubuntu
+  301  docker ps -a
+  302  clear
+  303  ps -eaf
+  304  c
+  305  clear
+  306  clear
+  307  docker pull jfrog-docker-reg2.bintray.io/jfrog/artifactory-pro:6.1.0
+  308  clear
+  309  docker images
+  310  clear
+  311  docker info
+  312  clear
+  313  history
+
