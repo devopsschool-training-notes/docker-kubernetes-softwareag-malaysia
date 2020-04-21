@@ -4,7 +4,7 @@ Day 2
 =========================
 https://www.devopsschool.com/tutorial/docker/commands/
 
-a
+
 diff
 	added
 	updated
@@ -119,4 +119,136 @@ https://forums.docker.com/t/connecting-via-unix-socket-to-the-docker-daemon/1739
   311  docker info
   312  clear
   313  history
+=====================================================================================
+=====================================================================================
+What is filesystem?
+- kind 
+	We create
+	OS
+OS
+=======================
+BOOTFS + ROOTFS + APPFS
+
+What is Image?
+====================================
+Collection of filesystem(s)
+
+ROOTFS + APPFS
+
+each filesystem - we can call it layer.
+	.ie. -- image has multiple layers. 
+
+in Image -
+	layer o - ROOTFS 		Read ONLY
+	LAYER 1 - APPFS - JAVA		Read ONLY
+	LAYER 2 - APPFS - TOMCAT	Read ONLY	
+	LAYER 3 - APPFS - NGINX		Read ONLY
+	LAYER 4 - APPFS - UPDATE	Read ONLY
+	----------image--------------
+
+WHEN YOU RUN
+----------------
+ALL Layers get merged into - ONE LAYER - READ and WRITE
+					diff - Anything you/app write in container - it reside here.
+					merged - THis place is merged of all layers and diff
+
+merged  -----> ITS SHOWN INTO CONTAINER.
+===================================================
+Who is doing this merge?
+	- union mount
+
+Rule of Merging?
+==========================
+When there is conflict in layers - TOP LAYER ALWAYS WIN.
+
+
+WHERE IS IMAGE Layer's IS BEING STORED?
+---------------------------
+Docker Root Dir: /var/lib/docker/ Storage Driver: overlay2
+
+wHERE IS IMAGE META IS BEING STORED?
+---------------------------
+/var/lib/docker/image
+
+Each layer is IDENTIFIED by UNIQUE HASH created by SHA256. - 40 Char
+-------
+Each layer has their parent layer.
+When you call child - parent auto come....
+
+==================================================================================
+I want to deve a image with SoftagX	Softagy
+================================
+				War file
+					Tomcat
+						java
+						 	rootfs
+============================================================
+App1  - java + Tomcat + War file = 1 LAYER
+
+rootfs -->> Container - java + Tomcat + War file
+===============================================
+	Image - 2 
+
+App2  - java + Tomcat + War file = Multiple
+===================================
+rootfs -->> Container ->java - One Image
+Image - 2 
+
+  399  docker history ubuntu
+  400  docker inspect ubuntu
+
+
+================================
+ROOTFS
+	j4  j5 	j6 j7 j8
+	-------------------
+	1 2  3   4    5
+================================
+How to create images?
+=================================
+
+1. Using Existing container - Lazy way
+-------------------------------------------
+ub-git-apache
+====================
+	
+ 463  ls
+  464  docker ps
+  465  docker commit -a"Rajesh kumar" -m"ub-git-ap-tom-j" 118cd350747e ub-git-ap-tom-j
+
+docker commit -a"Rajesh kumar" -m"ub-git-ap-tom-j" 118cd350747e ub-git-ap-tom-j:1.6
+  466  docker images
+  467  docker history ubuntu
+  468  docker history ub-git-ap-tom-j
+  469  cea
+  470  clear
+  471  docker images
+  472  docker run -itd ub-git-ap-tom-j
+  473  docker ps
+  474  docker exec e8ab5996c371 git
+  475  clear
+
+
+LAB -  
+Write a image 1 - with centos + jre + httpd(Enable)
+Write a image 2 - with ubuntu + jre + apache2(Enable)
+
+
+2. Using Dockerfile - Automated way
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
