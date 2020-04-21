@@ -232,6 +232,59 @@ docker commit -a"Rajesh kumar" -m"ub-git-ap-tom-j" 118cd350747e ub-git-ap-tom-j:
 LAB -  
 Write a image 1 - with centos + jre + httpd(Enable)
 Write a image 2 - with ubuntu + jre + apache2(Enable)
+==========================================================
+
+How to Share a Images?
+==========================
+	using tar bal
+
+ 525  clear
+  526  docker images
+  527  docker save -o ub-git-ap-tom-j.tar ub-git-ap-tom-j
+  528  ls
+  529  clear
+ 557  clear
+  554  docker imaes
+  555  docker images
+  556  docker rmi ub-git-ap-tom-j
+  557  clear
+  558  docker images
+  559  ls
+  560  docker load -i ub-git-ap-tom-j.tar
+  561  clear
+
+
+
+	using public registry
+ 567  ls
+  568  docker images
+  569  docker info
+  570  clear
+  571  docker login
+  572  docker images
+  573  docker push ub-git
+  574  clear
+  575  docker imates
+  576  docker images
+  577  docker tag ub-git scmgalaxy/malay
+  578  docker images
+  579  docker push scmgalaxy/malay
+  580  clear
+  581  docker images
+  582  history
+
+
+	using pvt registry
+
+
+
+
+
+
+
+
+
+==========================================================
 
 
 2. Using Dockerfile - Automated way
