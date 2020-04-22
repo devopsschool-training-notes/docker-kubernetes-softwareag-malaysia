@@ -1,0 +1,267 @@
+Docker Volume
+====================
+13.235.91.81
+Prb - How to store a container data beyond a container lifecycle?
+		How can we have data persistency?
+Answer - volume
+=================================
+- volume --> /var/lib/docker/volumes
+
+- mountfs --> Anywhere in HOST
+
+- tmpfs ---> memory
+
+
+ 1041  docker rm $(docker ps -a -q)
+ 1042  clear
+ 1043  docker ps -a
+ 1044  ls
+ 1045  clear
+ 1046  ls
+ 1047  docker volume
+ 1048  docker volume rm 0b721033fc195fd8bb0c3e436eb95414b91488871982a18167eccad89f797fc4 
+
+155715470d2ac1b0a41b415702835aafd7581a4f25b528813f1a967cd2d86ecd
+ 1049  docker volume ls
+ 1050  clear
+ 1051  docker volume
+ 1052  docker volume ls
+ 1053  docker volume prune
+ 1054  clrar
+ 1055  clear
+ 1056  ls
+ 1057  docker volume ls
+ 1058  docker volume
+ 1059  docker volume create dev
+ 1060  docker volume create qa
+ 1061  clear
+ 1062  docker volume create qa
+ 1063  docker volume ls
+ 1064  ls
+ 1065  tree
+ 1066  docker run -itd -v dev:/opt/dev ubuntu
+ 1067  docker ps
+ 1068  docker exec ce83b5b46c73 df -kh
+ 1069  clear
+ 1070  docker exec ce83b5b46c73 df -kh
+ 1071  ls
+ 1072  clear
+ 1073  ls
+ 1074  cd dev/_data/
+ 1075  ls
+ 1076  docker ps
+ 1077  docker exec ce83b5b46c73 touch /opt/dev/file1
+ 1078  ls
+ 1079  docker exec ce83b5b46c73 touch /opt/dev/file2
+ 1080  ls
+ 1081  touch file3
+ 1082  ls
+ 1083  docker exec ce83b5b46c73 ls /opt/dev/
+ 1084  ls
+ 1085  clear
+ 1086  ls
+ 1087  docker ps
+ 1088  docker stop ce83b5b46c73
+ 1089  docker rm ce83b5b46c73
+ 1090  clear
+ 1091  ls
+ 1092  docker run -itd -v dev:/opt/dev ubuntu
+ 1093  docker exec 5b3f7078eac1 ls /opt/dev/
+ 1094  docker run -itd -v dev:/opt/dev -v qa:/opt/raju ubuntu
+ 1095  docker ps
+ 1096  docker exec 24774eb4fd46 df -kh
+ 1097  docker exec 24774eb4fd46 ls /opt
+ 1098  clear
+ 1099  docker exec 24774eb4fd46 ls /opt
+ 1100  ls
+ 1101  cd ..
+ 1102  ls
+ 1103  cd ..
+ 1104  ls
+ 1105  cd qa/_data/
+ 1106  ls
+ 1107  touch dsf ds f sd f sd fsd  f sd fsdfsdfdsfsdfdf sd fsd fsd f ds
+ 1108  ls
+ 1109  docker exec 24774eb4fd46 ls /opt/raju
+ 1110  pwd
+ 1111  clear
+ 1112  ls
+ 1113  cd ..
+ 1114  ls
+ 1115  cd ..
+ 1116  clear
+ 1117  ls
+ 1118  tree
+ 1119  docker volume create
+ 1120  ls
+ 1121  clear
+ 1122  ls
+ 1123  pwd
+ 1124  docker ps
+ 1125  docker exec 24774eb4fd46 df -kh
+ 1126  clear
+ 1127  pwd
+ 1128  cd /opt/
+ 1129  s
+ 1130  .s
+ 1131  clear
+ 1132  ls
+ 1133  pwd
+ 1134  mkdir external
+ 1135  ls
+ 1136  cd external
+ 1137  pwd
+ 1138  doccker run -itd -v /opt/external:/opt/ext ubuntu
+ 1139  docker run -itd -v /opt/external:/opt/ext ubuntu
+ 1140  docker ps
+ 1141  docker exec 975314d52841 df -kh
+ 1142  clear
+ 1143  docker exec 975314d52841 touch /opt/ext/raju.txt
+ 1144  ls
+ 1145  touch fdsffsd
+ 1146  docker exec 975314d52841 ls /opt/ext/
+
+https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep-dive-level/
+
+Docker Compose
+====================
+Why?
+===========================RUN APP===================================
+		BUILD		RUN		ps      logs	 stop	rm 			
+service1 				port
+					vol
+service2				env
+					img	
+service3				net
+					link
+	
+service4
+
+service5
+
+=============================================
+Solution  - Docker Compose
+		=============================
+			ONE COMMAND
+
+
+
+For whom?
+=======================
+DEV - QA
+
+
+How to use?
+=================================================
+docker-compose
+		-> docker-compose.yaml
+-------------------docker-compose.yaml------------------------------
+services
+	service1
+				build
+				vol
+				env
+				img	
+				net
+				link
+	service2
+				vol
+				env
+				img	
+				net
+				link
+	service3
+				vol
+				env
+				img	
+				net
+				link
+	service4
+	serviceX...
+===========================================================
+		docker-compose build  - 6
+		docker-compose up  - 12
+		docker-compose down
+		docker-compose ps
+		docker-compose logs
+		docker-compose stop
+		docker-compose rm
+==========================================================================================
+
+
+
+
+version: '2'
+
+services:
+  wordpress:
+    image: wordpress:4.5
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    restart: always
+
+  db:
+    image: mariadb:10.1
+    volumes:
+      - "./volumes/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+
+ 1151  docker-compose
+ 1152  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname 
+
+-s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ 1153  sudo chmod +x /usr/local/bin/docker-compose
+ 1154  clear
+ 1155  docker-compose --version
+ 1156  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+ 1157  docker-compose --version
+ 1158  clear
+ 1159  ls
+ 1160  mkdir dc
+ 1161  cd dc/
+ 1162  clear
+ 1163  ls
+ 1164  vi docker-compose.yaml
+ 1165  vi docker-compose.yaml
+ 1166  clear
+ 1167  ls
+ 1168  docker-compose up -d
+ 1169  clear
+ 1170  docker-compose ps
+ 1171  docker-compose logs
+ 1172  clear
+ 1173  docker-compose stop
+ 1174  docker-compose ps
+ 1175  docker-compose start
+ 1176  docker-compose ps
+ 1177  ls
+ 1178  cd volumes
+ 1179  ls
+
+
+
+
+
+
+
+
+
+
+
+
+Kubernetes
+====================
