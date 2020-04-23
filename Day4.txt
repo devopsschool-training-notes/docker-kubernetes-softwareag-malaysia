@@ -269,6 +269,155 @@ spec:
    71  kubectl get pod -n=rajesh
    72  kubectl delete pod hello-rc-p729l -n=rajesh
    73  kubectl get pod -n=rajesh
+============================================================
+
+kubectl taint node ip-172-31-25-163.ap-south-1.compute.internal node-
+
+role.kubernetes.io/master:NoSchedule-
+==============================================================
+
+Deployment
+==========================
+Replication
+Controller	
+Rollout
+versioning
+Rollback
+
+kubectl delete pod --grace-period=0 --force
+
+
+Image
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+kubectl scale --replicas=100 deployment/my-dep -n=rajesh
+kubectl scale --replicas=5 deployment/my-dep -n=rajesh
+
+ 682  kubectl create deployment -h
+  683  clear
+  684*
+  685  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+  686  kubectl delete [ec2-user@ip-172-31-25-163 ~]$ kubectl create deployment my-dep --
+
+image=scmgalaxy/nginx-devopsschoolv1
+  687  kubectl delete deployment my-dep
+  688  clear
+  689  kubectl delete [ec2-user@ip-172-31-25-163 ~]$ kubectl create deployment my-dep --
+
+image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  690  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  691  ls
+  692  kubectl get deploy -n=rajesh
+  693  kubectl edit deploy my-dep -n=rajesh
+  694  kubectl get pod -n=rajesh
+  695  clear
+  696  kubectl get pod -n=rajesh
+  697  kubectl
+  698  clear
+  699  kubectl scale -h
+  700  clear
+  701  kubectl edit deploy my-dep -n=rajesh
+  702  kubectl get deploy -n=rajesh
+  703  clear
+  704  kubectl scale --replicas=100 deployment/my-dep
+  705  clear
+  706  kubectl scale --replicas=100 deployment/my-dep -n=rajesh
+  707  kubectl get deploy -n=rajesh
+  708  clear
+  709  kubectl get pods -n=rajesh
+  710  clear
+  711  ls
+  712  kubectl get pods -n=rajesh
+  713  clear
+  714  kubectl get pods -n=rajesh
+  715  clear
+  716  kubectl get pods -n=rajesh -o wide
+  717  clear
+  718  kubectl get pods -n=rajesh -o wide
+  719  clear
+  720  kubectl get deploy -n=rajesh
+  721  clear
+  722  kubectl get deploy -n=rajesh
+  723  clear
+  724  kubectl get deploy -n=rajesh
+  725  clear
+  726  kubectl get deploy -n=rajesh
+  727  watch kubectl get deploy -n=rajesh
+  728  kubectl scale --replicas=5 deployment/my-dep -n=rajesh
+  729  watch kubectl get deploy -n=rajesh
+==============================================================
+kubelet
+
+
+
+
+Image
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+
+kubectl rollout history deployment/my-dep -n=rajesh
+
+kubectl rollout undo deployment/my-dep --to-revision=1 -n=rajesh 
+
+kubectl rollout status deployment/my-dep -n=rajesh
+
+
+       
+ 750  kubectl rollout -h
+  751  clear
+  752  kubectl undo -h
+  753  clear
+  754  kubectl rollout undo -h
+  755  clear
+  756  kubectl rollout -h
+  757  clwar
+  758  clear
+  759  kubectl get deploy -n=rajesh
+  760  curl http://10.44.0.4
+  761  kubectl edit deploy my-dep -n=rajesh
+  762  kubectl rollout history deployment/my-dep -n=rajesh
+  763  kubectl edit deploy my-dep -n=rajesh
+  764  clear
+  765  kubectl rollout status deployment/my-dep -n=rajesh
+  766  kubectl get pods -n=rajesh -o wide
+  767  clear
+  768  curl http://10.44.0.6
+  769  kubectl rollout status deployment/my-dep -n=rajesh
+  770  kubectl rollout history deployment/my-dep -n=rajesh
+  771  clear
+  772  kubectl rollout undo deployment/my-dep --to-revision=1 -n=rajesh
+  773  kubectl rollout status deployment/my-dep -n=rajesh
+  774  kubectl rollout history deployment/my-dep -n=rajesh
+  775  kubectl get pods -n=rajesh -o wide
+  776  clear
+  777  curl http://10.44.0.5
+  778  clear
+  779  history
+
+
+ 778  clear
+  779  history
+  780  clear
+  781  kubectl get deploy -n=rajesh
+  782  kubectl describe deploy my-dep -n=rajesh
+  783  clear
+  784  kubectl get deploy -n=rajesh
+  785  kubectl get deploy my-dep -n=rajesh -o yaml
+  786  clear
+  787  kubectl get deploy my-dep -n=rajesh -o yaml --export
+  788  clear
+  789  kubectl get deploy my-dep -n=rajesh -o yaml --export >> rajesh.yaml
+  790  more rajesh.yaml
+  791  history
+
+
+
+
+
+
+
 
 
 
