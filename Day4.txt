@@ -198,9 +198,77 @@ kubectl cp pod.yaml hello-pod:/tmp/ -n=rajesh
   194  kubectl cp pod.yaml hello-pod:/tmp/ -n=rajesh
   195  kubectl exec hello-pod ls /tmp
   196  kubectl exec hello-pod ls /tmp -n=rajesh
+======================================================
+ReplicationController
+=============================
+N num of PODS.
+Replication - It would replicate a POD to many
+Controler - It control a desire and actual.
 
+	CRUD
+	----------------------
+	CREATE 	
+		create
+		apply
 
+	READ
+		get
+		describe
+	UPDATE
+		edit
+		apply
 
+	DELETE
+		delete
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: nginx
+        ports:
+        - containerPort: 80
+
+ 43  kubectl get rc
+   44  kubectl get rc -n=rajesh
+   45  kubectl get pods -n=rajesh
+   46  kubectl delete pods hello-pod -n=rajesh
+   47  clear
+   48  kubectl get pods -n=rajesh
+   49  kubectl get rc -n=rajesh
+   50  ls
+   51  cd rajesh
+   52  ls
+   53  vi rc.yaml
+   54  clear
+   55  kubeclt create -f rc.yaml -n=rajesh
+   56  kubectl create -f rc.yaml -n=rajesh
+   57  kubectl get rc -n=rajesh
+   58  kubectl get pod -n=rajesh
+   59  kubectl edit rc hello-rc -n=rajesh
+   60  kubectl get pod -n=rajesh
+   61  clear
+   62  kubectl get pod -n=rajesh
+   63  kubectl edit rc hello-rc -n=rajesh
+   64  kubectl get pod -n=rajesh
+   65  kubectl edit rc hello-rc -n=rajesh
+   66  clear
+   67  kubectl get pod -n=rajesh
+   68  kubectl delete pod hello-rc-x5s5w -n=rajesh
+   69  kubectl get pod -n=rajesh
+   70  clear
+   71  kubectl get pod -n=rajesh
+   72  kubectl delete pod hello-rc-p729l -n=rajesh
+   73  kubectl get pod -n=rajesh
 
 
 
