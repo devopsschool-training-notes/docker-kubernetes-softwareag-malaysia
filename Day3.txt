@@ -19,9 +19,7 @@ Answer - volume
  1045  clear
  1046  ls
  1047  docker volume
- 1048  docker volume rm 0b721033fc195fd8bb0c3e436eb95414b91488871982a18167eccad89f797fc4 
-
-155715470d2ac1b0a41b415702835aafd7581a4f25b528813f1a967cd2d86ecd
+ 1048  docker volume rm 0b721033fc195fd8bb0c3e436eb95414b91488871982a18167eccad89f797fc4 155715470d2ac1b0a41b415702835aafd7581a4f25b528813f1a967cd2d86ecd
  1049  docker volume ls
  1050  clear
  1051  docker volume
@@ -221,9 +219,7 @@ services:
 
 
  1151  docker-compose
- 1152  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname 
-
--s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ 1152  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
  1153  sudo chmod +x /usr/local/bin/docker-compose
  1154  clear
  1155  docker-compose --version
@@ -251,17 +247,125 @@ services:
  1177  ls
  1178  cd volumes
  1179  ls
-
-
-
-
-
-
-
-
+================================================
+NETWORK DRIVER 
+	=======================
+	BRIDGE
+	HOST
+	NULL
 
 
 
 
 Kubernetes
-====================
+=========================================
+Master
+- API server 		-> POD -> Container -> Image -> Regitry
+- Etcd  		-> POD -> Container -> Image -> Regitry
+- Controller mgr	-> POD -> Container -> Image -> Regitry
+- Schedular		-> POD -> Container -> Image -> Regitry
+
+- Kubelet
+- Docker
+- Kube Proxy		-> POD -> Container -> Image -> Regitry
+
+Worker aka nodes
+- Kubelet
+- Docker
+- Kube Proxy		-> POD -> Container -> Image -> Regitry
+
+Workstation
+- Kubectl --> config
+			CURR_DIR/.kube/config
+			~/.kube/config
+What is the content of config?
+===================================
+clustors
+	clus1
+	clus2
+	clus3
+contexts
+	contx1 = clus1 + user3
+	cont2
+	contx3
+users
+	user1
+	user2
+	user3
+curr-context
+	contx1 
+
+
+
+
+
+Where do you setup k8s clustor?
+================================
+LAPTOP - minikube - ONE NODE CLUSTOR
+
+VMS - kubeadm manual
+
+Physcial server - kubeadm manual
+
+AWS - EKS
+
+GC - GKE
+
+Azure - AKS
+
+KOPS
+	AWS
+	Vmarwwae
+	GC
+
+40++++++++
+===========================================
+How to setup k8s in Vms using kubeadm?
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+
+RHEL-7.5_HVM_GA-20180322-x86_64-1-Hourly2-GP2 (ami-5b673c34)
+
+Master - 13.233.124.94
+Worker - 13.233.236.132
+
+What is kubeadm?
+https://github.com/kubernetes/kubeadm
+
+Docker - 
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+###
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" 
+###
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.25.163:6443 --token 1emk0p.b9v1gqy63377ni7l --discovery-token-ca-cert-hash sha256:98e9b538c672d3617d8ed692b2b5e9789956f03795efefc71b4b7f0109b74a9f
+kubeadm join 172.31.25.163:6443 --token 1emk0p.b9v1gqy63377ni7l --discovery-token-ca-cert-hash sha256:98e9b538c672d3617d8ed692b2b5e9789956f03795efefc71b4b7f0109b74a9f
+
+How to setup a workstation?z
+================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
