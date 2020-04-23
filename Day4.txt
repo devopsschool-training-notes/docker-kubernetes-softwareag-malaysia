@@ -1,0 +1,208 @@
+Workstation
+15.206.91.84
+
+===================================
+15.206.91.84
+15.206.72.226
+
+kubectl
+
+=====================
+You need to know DESIRE(What DO yOU want)
+		Declare in YAML...
+			Send via kubectl to API.....
+
+You need to know DESIRE(What DO yOU want)
+===============================================
+namespaces
+nodes
+pods
+replicationcontrollers
+deployments
+services
+
+	USING CMD LINE
+	USING YAML FILE
+
+
+
+APIGROUP
+	admissionregistration.k8s.io
+	apps
+	authentication.k8s.io
+
+ 45  kubectl cluster-info
+   46  kubectl
+   47  clear
+   48  kubectl api-resources
+   49  clear
+   50  kubectl api-resources | wc -l
+   51  kubectl api-resources
+   52  clear
+   53  kubectl api-resources
+   54  clear
+   55  kubectl api-resources
+   56  clear
+   57  kubectl api-resources
+   58  clear
+   59  kubectl
+   60  clear
+   61  kubectl api-versions
+   62  cclear
+   63  clear
+   64  kubectl api-resources | greo deployment
+   65  kubectl api-resources | grep deployment
+====================================================
+namespaces aka Small clustor
+====================================
+	CRUD
+	----------------------
+	CREATE 	
+		create
+		apply
+
+	READ
+		get
+		describe
+	UPDATE
+		edit
+		apply
+
+	DELETE
+		delete
+
+  71  kubectl
+   72  clear
+   73  kubectl get ns
+   74  kubectl
+   75  clear
+   76  kubectl api-resources
+   77  clear
+   78  kubectl get nodes
+   79  kubectl get pods
+   80  kubectl get pods -n=kube-system
+   81  clear
+   82  ls
+   83  kubectl get rc
+   84  kubectl get deploy
+   85  kubectl get svc
+   86  cler
+   87  clear
+   88  ls
+   89  kubectl create ns rajesh
+   90  kubectl get ns
+   91  kubectl describe ns rajesh
+   92  kubectl edit ns rajesh
+   93  clear
+   94  kubectl get ns
+   95  kubectl edit ns rajesh
+   96  kubectl delete ns rajesh
+   97  kubectl get ns
+   98  kubectl create ns rajesh
+   99  clear
+  100  kubectl get ns
+  101  history
+========================================================
+/home/ec2-user
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+
+kubectl explain
+kubectl explain ns
+136  clear
+  137  kubectl explain
+  138  kubectl explain -h
+  139  clear
+  140  kubectl explain ns
+  141  clear
+  142  kubectl explain ns.spec
+  143  kubectl explain pod
+  144  clear
+  145  kubectl explain pod.spec
+  146  clear
+  147  kubectl explain pod.spec.containers
+  148  clear
+  149  history
+
+================================
+
+How to consume PODS?	
+	GO INSIDE A POD - POSSIBLE?
+	exec
+	attach	
+	
+	Accessing a pod usin http:
+	cp
+	logs
+
+
+kubectl cp pod.yaml hello-pod:/tmp/ -n=rajesh
+
+
+ 151  kubectl get pods
+  152  kubectl get pods -n=rajesh
+  153  kubectl delete pod hello-pod
+  154  clear
+  155  ls
+  156  kubectl get pods -n=rajesh
+  157  kubectl edit pod hello-pod -n=rajesh
+  158  clear
+  159  ls
+  160  clear
+  161  kube get pods -n=rajesh -o wide
+  162  kubectl get pods -n=rajesh -o wide
+  163  curl http://10.44.0.2
+  164  clear
+  165  kubectl edit pod hello-pod -n=rajesh
+  166  kubectl get pods -n=rajesh
+  167  kubectl get pods -n=rajesh -o wide
+  168  curl http://10.44.0.2
+  169  clear
+  170  kubectl get pods
+  171  kubectl
+  172  clear
+  173  kubectl
+  174  clear
+  175  kubectl get pods -o wide -n=rajesh
+  176  kubectl exec -it hello-pod /bin/bash
+  177  kubectl exec -it hello-pod /bin/bash -n=rajesh
+  178  kubectl exec -h
+  179  clear
+  180  kubectl attach hello-pod
+  181  kubectl attach hello-pod -n=rajesh
+  182  clear
+  183  kubectl get pods -o wide -n=rajesh
+  184  kubectl logs hello-pod
+  185  kubectl logs pod hello-pod
+  186  kubectl logs pod hello-pod -n=rajesh
+  187  kubectl logs hello-pod -n=rajesh
+  188  ls
+  189  clear
+  190  ls
+  191  kubectl cp pod.yaml hell-pod -n=rajesh
+  192  kubectl cp -h
+  193  clear
+  194  kubectl cp pod.yaml hello-pod:/tmp/ -n=rajesh
+  195  kubectl exec hello-pod ls /tmp
+  196  kubectl exec hello-pod ls /tmp -n=rajesh
+
+
+
+
+
+
+
+
