@@ -413,8 +413,218 @@ kubectl rollout status deployment/my-dep -n=rajesh
   791  history
 
 
+==========================================================
+==========================================================
+
+Services
+====================================
+SCOPE OF THE SERVICE
+=========================
+		CLUSTORIP - Default
+		NodePort(Default CLUSTORIP)
+		LoadBalancer(CLUSTORIP -> NodePort) 
+	
+CLUSTORIP - Default
+kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh
+kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=NodePort --name=node
+
+kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=LoadBalancer --name=elbb1
 
 
+
+
+ 793  kubectl get deploy -n=rajesh
+  794  kubectl
+  795  clear
+  796  kubectl expose -h
+  797  clear
+  798  kubectl get deploy -n=rajesh
+  799  kubectl get pod -n=rajesh -o wide
+  800  clear
+  801  curl http://10.32.0.43
+  802  clear
+  803  kubectl get svc -n=rajesh
+  804  kubectl expose deploy my-dep --port=80 --target-port=8000
+  805  kubectl get svc -n=rajesh
+  806  kubectl
+  807  clear
+  808  kubectl config
+  809  clear
+  810  c
+  811  clear
+  812  kubectl expose deploy my-dep --port=80 --target-port=8000 -n=rajesh
+  813  kubectl get svc -n=rajesh
+  814  curl http://10.101.115.253
+  815  kubectl describe svc my-dep -n=rajesh
+  816  clear
+  817  ls
+  818  cd rajesh
+  819  ls
+  820  kubectl describe svc my-dep -n=rajesh
+  821  ls
+  822  kubectl apply -f pod.yaml -n=rajesh
+  823  clear
+  824  kubectl get pods
+  825  clear
+  826  kubectl get pods -n=rajesh
+  827  kubectl edit deploy my-dep -n=rajesh
+  828  clear
+  829  kubectl edit deploy my-dep -n=rajesh
+  830  clear
+  831  kubectl get pods -n=rajesh
+  832  kubectl describe svc my-dep -n=rajesh
+  833  clear
+  834  kubectl describe svc my-dep -n=rajesh
+  835  clear
+  836  ls
+  837  kubectl get svc
+  838  curl http://10.97.77.177
+  839  curl http://10.97.77.177:8000
+  840  kubectl describe svc my-dep -n=rajesh
+  841  c
+  842  eark
+  843  clear
+  844  curl http://10.32.0.43:8000
+  845  kubectl edit svc my-dep -n=rajesh
+  846  clear
+  847  curl http://10.32.0.43:8000
+  848  kubectl describe svc my-dep -n=rajesh
+  849  curl http://10.32.0.43:80
+  850  curl http://10.101.115.253:80808
+  851  curl http://10.101.115.253:8000
+  852  clear
+  853  curl http://10.101.115.253:8000
+  854  kubectl get svc -n=rajesh
+  855  kubectl get svc -n=rajesh --show-labels
+  856  kubectl get pod -n=rajesh --show-labels
+  857  kubectl describe svc my-dep -n=rajesh
+  858  clear
+  859  kubectl get svc -n=rajesh --show-labels
+  860  kubectl describe svc my-dep -n=rajesh
+  861  kubectl get pod -n=rajesh --show-labels
+  862  clear
+  863  kubectl edit svc my-dep -n=rajesh
+  864  clear
+  865  kubectl describe svc my-dep -n=rajesh
+  866  clear
+  867  ls
+  868  kubectl get svc -n=rajesh --show-labels
+  869  curl http://10.101.115.253:8000
+  870  clear
+  871  kubectl get pod
+  872  clear
+  873  kubectl get pod -n=rajesh
+  874  kubectl get pod -n=rajesh --show-lables
+  875  kubectl get pod -n=rajesh --show-labels
+  876  kubectl lable pod hello-pod app=my-dep1
+  877  clear
+  878  kubectl label pod hello-pod app=my-dep1
+  879  kubectl label pod hello-pod app=my-dep1 -n=rajesh
+  880  kubectl label pod hello-pod app=my-dep1 -n=rajesh --overwrite
+  881  clear
+  882  kubectl get pod -n=rajesh --show-lables
+  883  kubectl get pod -n=rajesh --show-labels
+  884  kubectl get svc -n=rajesh
+  885  kubectl describe svc my-dep -n=rajesh
+  886  clear
+  887  kubectl get svc -n=rajesh
+  888  curl http://10.101.115.253
+  889  curl http://10.101.115.253:8000
+  890  clear
+  891  kubectl label pod hello-pod app=my-dep -n=rajesh --overwrite
+  892  kubectl describe svc my-dep -n=rajesh
+  893  kubectl edit svc my-dep -n=rajesh
+  894  clear
+  895  kubectl describe svc my-dep -n=rajesh
+  896  kubectl edit svc my-dep -n=rajesh
+  897  kubectl describe svc my-dep -n=rajesh
+  898  clear
+  899  kubectl get svc -n=rajesh
+  900  curl http://10.101.115.253
+  901  curl http://10.101.115.253:8000
+  902  clear
+  903  curl http://10.101.115.253:8000
+  904  clear
+  905  curl http://10.101.115.253:8000
+  906  clear
+  907  curl http://10.101.115.253:8000\
+  908  curl http://10.101.115.253:8000
+  909  clear
+  910  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=NodePort
+  911  clear
+  912  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=NodePort --name=node
+  913  kubectl get svc -n=rajesh
+  914  curl http://10.104.144.3:8000
+  915  clear
+  916  ip a
+  917  clear
+  918  kubectl get svc -n=rajesh
+  919  clear
+  920  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=NodePort --name=elb
+  921  kubectl get svc -n=rajesh
+  922  clear
+  923  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=Loadbalancer --
+
+name=elb
+  924  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=Loadbalancer --
+
+name=elbb1
+  925  clear
+  926  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=LoadBalancer --
+
+name=elbb1
+  927  kubectl get svc -n=rajesh
+  928  clear
+  929  curl http://http://raj-930683150.ap-south-1.elb.amazonaws.com/
+  930  curl http://raj-930683150.ap-south-1.elb.amazonaws.com/
+  931  clear
+  932  curl http://raj-930683150.ap-south-1.elb.amazonaws.com/
+  933  cler
+  934  clear
+  935  history
+
+=========================================
+QA 
+WEB - nginx vs APAChe VS IIS
+=========================================================
+Docker
+	Dcokerfile
+		Dockercompose
+				kubernetes
+					Compute
+					Service
+					NETWORK
+					Storage
+					Security
+						ServiceMesh
+								ServiceRegistry
+										
+https://www.devopsschool.com/blog/understanding-the-tools-sets-in-kubernetes-ecosystem/
+=========================================================================================
+
+
+Resources
+===================
+Video	- https://www.youtube.com/TheDevOpsSchool
+Slides  - https://www.youtube.com/TheDevOpsSchool
+Notes - https://github.com/devopsschool-training-notes/docker-kubernetes-softwareag-malaysia
+Sample Programs - https://github.com/orgs/devopsschool-sample-programs/dashboard
+PDF - https://www.devopsschool.com/pdf/
+Tutorials - https://www.devopsschool.com/tutorial/
+Blogs
+	https://www.devopsschool.com/blog/?s=docker
+	https://www.devopsschool.com/blog/?s=kubernetes
+Recordings
+	https://www.devopsschool.com/lms
+===================================================
+Off kub Doc page.
+
+
+How to reach out to trainer ?
+http://rajeshkumar.xyz/
+
+
+===================
 
 
 
