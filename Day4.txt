@@ -1,367 +1,111 @@
-Master
-	API Server --> POD -> Container(S) -> Image --> Google Registry ->
-	Clustor Store ETCD --> POD -> Container(S) -> Image --> Google Registry ->
-	Schedular --> POD -> Container(S) -> Image --> Google Registry ->
-	Controller--> POD -> Container(S) -> Image --> Google Registry ->
-	
-	kubelet		
-	Container Engine	
-	Kube Proxy --> POD -> Container(S) -> Image --> Google Registry ->
-Worker
-	kubelet	
-	Container Engine
-	Kube Proxy --> POD -> Container(S) -> Image --> Google Registry ->
 Workstation
-	Kubectl
+15.206.91.84
 
-Desire --> Declare in YAML
-==============================
-POD -> Container(S) -> Image --> Registry ->
-Replication Controller 
-Deployment
-Services
-	
+===================================
+15.206.91.84
+15.206.72.226
 
-Single Node Clustor
-==============================
-- minikube
-https://www.devopsschool.com/tutorial/kubernetes/minikube-installation-procedures.html
-https://www.devopsschool.com/tutorial/kubernetes/minikube-commands-reference.html
-https://www.devopsschool.com/videos/593/kubernetes-advance-tutorial-for-beginners-with-demo-2020-minikube-part-01-by-devopsschool/
-https://www.devopsschool.com/videos/464/kubernetes-advance-tutorial-for-beginners-with-demo-2020-minikube-part-02-by-devopsschool/
+kubectl
 
-Hardway
-==============================
-https://github.com/kelseyhightower/kubernetes-the-hard-way
+=====================
+You need to know DESIRE(What DO yOU want)
+		Declare in YAML...
+			Send via kubectl to API.....
 
-Manual Way
-==============================
-Kubeadm [OFFICIAL WAY]
+You need to know DESIRE(What DO yOU want)
+===============================================
+namespaces
+nodes
+pods
+replicationcontrollers
+deployments
+services
 
-Managed Clustor to Cloud Providor
-=============================
-AWS 	-> EKS
-Google  -> GKE
-Azure	-> AKS
-
-YOU WANT TO MANAGE YOUR OWN CLUSTOR BUT Integration with CLOUD SERVICES
-================
-KOPS
-https://github.com/kubernetes/kops
-https://www.devopsschool.com/videos/show/kops?type=video
-
-Manual Way
-==============================
-Kubeadm [OFFICIAL WAY]
-===================================================
-https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
-13.233.116.86
+	USING CMD LINE
+	USING YAML FILE
 
 
-To start using your cluster, you need to run the following as a regular user:
 
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+APIGROUP
+	admissionregistration.k8s.io
+	apps
+	authentication.k8s.io
 
-You should now deploy a pod network to the cluster.
-Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
-  https://kubernetes.io/docs/concepts/cluster-administration/addons/
-##### kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-
-
-Then you can join any number of worker nodes by running the following on each as root:
-
-kubeadm join 172.31.15.187:6443 --token 3yh47f.wi7qj1g5pqv6ptvf \
-    --discovery-token-ca-cert-hash sha256:b092c23e10acd1f0a0cd3e1fe1cd3aff0931d5a7d629a3d6b11d9c04aa973465
-
-
-======================================================
-
-To start using your cluster, you need to run the following as a regular user:
-
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+ 45  kubectl cluster-info
+   46  kubectl
+   47  clear
+   48  kubectl api-resources
+   49  clear
+   50  kubectl api-resources | wc -l
+   51  kubectl api-resources
+   52  clear
+   53  kubectl api-resources
+   54  clear
+   55  kubectl api-resources
+   56  clear
+   57  kubectl api-resources
+   58  clear
+   59  kubectl
+   60  clear
+   61  kubectl api-versions
+   62  cclear
+   63  clear
+   64  kubectl api-resources | greo deployment
+   65  kubectl api-resources | grep deployment
 ====================================================
-Setting up a Workstation
+namespaces aka Small clustor
+====================================
+	CRUD
+	----------------------
+	CREATE 	
+		create
+		apply
 
-kubectl	--> config
-		$HOME/.kube/config
-		CURR_DIR/.kube/config
+	READ
+		get
+		describe
+	UPDATE
+		edit
+		apply
 
+	DELETE
+		delete
 
-		config
-			YAML FORMAT
-			CLUSTOR(S)	
-				CLUSTOR1 - API SERVER Addresss
-				CLUSTOR2 - API SERVER Addresss
-				CLUSTOR3 - API SERVER Addresss
-			USER(S)
-				USER 1 - Certificates
-				USER 2 - Certificates
-				USER 3 - Certificates
-			Context(S)
-				Context 1 = CLUSTOR1 + USER 3
-				Context 2 = CLUSTOR2 + USER 1	
-				Context 3 = CLUSTOR3 + USER 2
-			CURR-CONTEXT
-				Context 1 OR Context 2 OR Context 3
-
-				API SERVER Addresss
-				USER
-				Certificates
-=================================================================================
-How to verify if Master is in Healthy?
-
-[ec2-user@ip-172-31-15-187 ~]$ kubectl
-kubectl controls the Kubernetes cluster manager.
-
- Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
-
-Basic Commands (Beginner):
-  create        Create a resource from a file or from stdin.
-  expose        Take a replication controller, service, deployment or pod and expose it as a new
-Kubernetes Service
-  run           Run a particular image on the cluster
-  set           Set specific features on objects
-
-Basic Commands (Intermediate):
-  explain       Documentation of resources
-  get           Display one or many resources
-  edit          Edit a resource on the server
-  delete        Delete resources by filenames, stdin, resources and names, or by resources and label
-selector
-
-Deploy Commands:
-  rollout       Manage the rollout of a resource
-  scale         Set a new size for a Deployment, ReplicaSet or Replication Controller
-  autoscale     Auto-scale a Deployment, ReplicaSet, or ReplicationController
-
-Cluster Management Commands:
-  certificate   Modify certificate resources.
-  cluster-info  Display cluster info
-  top           Display Resource (CPU/Memory/Storage) usage.
-  cordon        Mark node as unschedulable
-  uncordon      Mark node as schedulable
-  drain         Drain node in preparation for maintenance
-  taint         Update the taints on one or more nodes
-
-Troubleshooting and Debugging Commands:
-  describe      Show details of a specific resource or group of resources
-  logs          Print the logs for a container in a pod
-  attach        Attach to a running container
-  exec          Execute a command in a container
-  port-forward  Forward one or more local ports to a pod
-  proxy         Run a proxy to the Kubernetes API server
-  cp            Copy files and directories to and from containers.
-  auth          Inspect authorization
-
-Advanced Commands:
-  diff          Diff live version against would-be applied version
-  apply         Apply a configuration to a resource by filename or stdin
-  patch         Update field(s) of a resource using strategic merge patch
-  replace       Replace a resource by filename or stdin
-  wait          Experimental: Wait for a specific condition on one or many resources.
-  convert       Convert config files between different API versions
-  kustomize     Build a kustomization target from a directory or a remote url.
-
-Settings Commands:
-  label         Update the labels on a resource
-  annotate      Update the annotations on a resource
-  completion    Output shell completion code for the specified shell (bash or zsh)
-
-Other Commands:
-  alpha         Commands for features in alpha
-  api-resources Print the supported API resources on the server
-  api-versions  Print the supported API versions on the server, in the form of "group/version"
-  config        Modify kubeconfig files
-  plugin        Provides utilities for interacting with plugins.
-  version       Print the client and server version information
-
-Usage:
-  kubectl [flags] [options]
-
-Use "kubectl <command> --help" for more information about a given command.
-Use "kubectl options" for a list of global command-line options (applies to all commands).
-[ec2-user@ip-172-31-15-187 ~]$
+  71  kubectl
+   72  clear
+   73  kubectl get ns
+   74  kubectl
+   75  clear
+   76  kubectl api-resources
+   77  clear
+   78  kubectl get nodes
+   79  kubectl get pods
+   80  kubectl get pods -n=kube-system
+   81  clear
+   82  ls
+   83  kubectl get rc
+   84  kubectl get deploy
+   85  kubectl get svc
+   86  cler
+   87  clear
+   88  ls
+   89  kubectl create ns rajesh
+   90  kubectl get ns
+   91  kubectl describe ns rajesh
+   92  kubectl edit ns rajesh
+   93  clear
+   94  kubectl get ns
+   95  kubectl edit ns rajesh
+   96  kubectl delete ns rajesh
+   97  kubectl get ns
+   98  kubectl create ns rajesh
+   99  clear
+  100  kubectl get ns
+  101  history
+========================================================
+/home/ec2-user
 
 
-
-=======================================
-Setting up a worker
-===========================
-35.154.202.72
-13.235.87.234
-
-
-Desire --> Declare in YAML
-==============================
-POD -> Container(S) -> Image --> Registry ->
-Replication Controller 
-Deployment
-Services
-
-======================================================
-START POINT
-=======================================================
-
- 9  kubectl cluster-info
-   10  clear
-   11  kubectl et
-   12  kubectl get
-   13  kubectl -h
-   14  kubectl get -h
-   15  clear
-   16  kubectl get -h
-   17  clear
-   18  kubectl get pods
-   19  kubectl get pods --all-namespaces
-   20  kubectl get nodes
-   23  kubectl get nodes
-   24  kubectl get pods --all-namespaces
-   25  clear
-   26  kubectl get nodes
-   27  kubectl get pods
-   28  clear
-   29  kubectl get ns
-   30  kubectl get pods -n=kube-system
-   31  history
-
-   33  kubectl api-resources
-   34  kubectl api-resources | wc -l
-   35  clear
-   36  kubectl api-resources
-   37  clear
-   38  kubectl api-versions
-
-
-
-NAME                              SHORTNAMES   APIGROUP                       NAMESPACED   KIND
-bindings                                                                      true         Binding
-componentstatuses                 cs                                          false        ComponentStatus
-configmaps                        cm                                          true         ConfigMap
-endpoints                         ep                                          true         Endpoints
-events                            ev                                          true         Event
-limitranges                       limits                                      true         LimitRange
-namespaces                        ns                                          false        Namespace
-nodes                             no                                          false        Node
-persistentvolumeclaims            pvc                                         true         PersistentVolumeClaim
-persistentvolumes                 pv                                          false        PersistentVolume
-pods                              po                                          true         Pod
-podtemplates                                                                  true         PodTemplate
-replicationcontrollers            rc                                          true         ReplicationController
-resourcequotas                    quota                                       true         ResourceQuota
-secrets                                                                       true         Secret
-serviceaccounts                   sa                                          true         ServiceAccount
-services                          svc                                         true         Service
-mutatingwebhookconfigurations                  admissionregistration.k8s.io   false        MutatingWebhookConfiguration
-validatingwebhookconfigurations                admissionregistration.k8s.io   false        ValidatingWebhookConfiguration
-customresourcedefinitions         crd,crds     apiextensions.k8s.io           false        CustomResourceDefinition
-apiservices                                    apiregistration.k8s.io         false        APIService
-controllerrevisions                            apps                           true         ControllerRevision
-daemonsets                        ds           apps                           true         DaemonSet
-deployments                       deploy       apps                           true         Deployment
-replicasets                       rs           apps                           true         ReplicaSet
-statefulsets                      sts          apps                           true         StatefulSet
-tokenreviews                                   authentication.k8s.io          false        TokenReview
-localsubjectaccessreviews                      authorization.k8s.io           true         LocalSubjectAccessReview
-selfsubjectaccessreviews                       authorization.k8s.io           false        SelfSubjectAccessReview
-selfsubjectrulesreviews                        authorization.k8s.io           false        SelfSubjectRulesReview
-subjectaccessreviews                           authorization.k8s.io           false        SubjectAccessReview
-horizontalpodautoscalers          hpa          autoscaling                    true         HorizontalPodAutoscaler
-cronjobs                          cj           batch                          true         CronJob
-jobs                                           batch                          true         Job
-certificatesigningrequests        csr          certificates.k8s.io            false        CertificateSigningRequest
-leases                                         coordination.k8s.io            true         Lease
-endpointslices                                 discovery.k8s.io               true         EndpointSlice
-events                            ev           events.k8s.io                  true         Event
-ingresses                         ing          extensions                     true         Ingress
-ingressclasses                                 networking.k8s.io              false        IngressClass
-ingresses                         ing          networking.k8s.io              true         Ingress
-networkpolicies                   netpol       networking.k8s.io              true         NetworkPolicy
-runtimeclasses                                 node.k8s.io                    false        RuntimeClass
-poddisruptionbudgets              pdb          policy                         true         PodDisruptionBudget
-podsecuritypolicies               psp          policy                         false        PodSecurityPolicy
-clusterrolebindings                            rbac.authorization.k8s.io      false        ClusterRoleBinding
-clusterroles                                   rbac.authorization.k8s.io      false        ClusterRole
-rolebindings                                   rbac.authorization.k8s.io      true         RoleBinding
-roles                                          rbac.authorization.k8s.io      true         Role
-priorityclasses                   pc           scheduling.k8s.io              false        PriorityClass
-csidrivers                                     storage.k8s.io                 false        CSIDriver
-csinodes                                       storage.k8s.io                 false        CSINode
-storageclasses                    sc           storage.k8s.io                 false        StorageClass
-volumeattachments                              storage.k8s.io                 false        VolumeAttachment
-
-[ec2-user@ip-172-31-15-187 ~]$ kubectl api-versions
-admissionregistration.k8s.io/v1
-admissionregistration.k8s.io/v1beta1
-apiextensions.k8s.io/v1
-apiextensions.k8s.io/v1beta1
-apiregistration.k8s.io/v1
-apiregistration.k8s.io/v1beta1
-apps/v1
-authentication.k8s.io/v1
-authentication.k8s.io/v1beta1
-authorization.k8s.io/v1
-authorization.k8s.io/v1beta1
-autoscaling/v1
-autoscaling/v2beta1
-autoscaling/v2beta2
-batch/v1
-batch/v1beta1
-certificates.k8s.io/v1beta1
-coordination.k8s.io/v1
-coordination.k8s.io/v1beta1
-discovery.k8s.io/v1beta1
-events.k8s.io/v1beta1
-extensions/v1beta1
-networking.k8s.io/v1
-networking.k8s.io/v1beta1
-node.k8s.io/v1beta1
-policy/v1beta1
-rbac.authorization.k8s.io/v1
-rbac.authorization.k8s.io/v1beta1
-scheduling.k8s.io/v1
-scheduling.k8s.io/v1beta1
-storage.k8s.io/v1
-storage.k8s.io/v1beta1
-v1
-
-
-EACH API OBJECT HAS 4 METHOD
-	----- CRUD
-	
-	Create
-		CMD
-			create
-		YAML
-			create
-	Read
-		CMD
-			get
-	Update
-		CMD
-			edit
-		YAML
-			apply
-	Delete
-		CMD
-			delete
-		YAML
-			delete
-
-============================================
-  108  kubectl get ns
-  109  kubectl create ns dev
-  110  kubectl get ns
-  111  kubectl edit ns dev
-  112  kubectl delete ns dev
-
-
-
-POD -> Container -> Image -> Registry
-====================
 apiVersion: v1
 kind: Pod
 metadata:
@@ -375,111 +119,107 @@ spec:
     ports:
     - containerPort: 80
 
-  112  kubectl delete ns dev
-  113  history
-  114  clear
-  115  kubectl create -h
-  116  clear
-  117  ls
-  118  lear
-  119  l
-  120  clear
-  121  ls
-  122  cd
-  123  ls
-  124  PWD
-  125  pwd
-  126  mkdir rajesh
-  127  cd rajesh/
-  128  ls
-  129  pwd
-  130  vi pod.yaml
-  131  pwd
-  132  kubectl get ns
-  133  kubectl create ns rajesh
-  134  kubectl get ns
-  135  clear
-  136  ls
-  137  kubectl create -f pod.yaml -n=rajesh
-  138  kubectl create -f pod.yaml
-  139  kubectl get pods
-  140  kubectl get pods -n=rajesh
-  141  kubectl edit pod hello-pod  -n=rajesh
-  142  kubectl get pods -n=rajesh
-  143  kubectl get pods -n=rajesh --show-labels
-  144  kubectl get pods -n=rajesh --show-labeles -o wide
-  145  kubectl get pods -n=rajesh-o wide
-  146  kubectl get pods -n=rajesh -o wide
-  147  curl http://10.44.0.1
+
+kubectl explain
+kubectl explain ns
+136  clear
+  137  kubectl explain
+  138  kubectl explain -h
+  139  clear
+  140  kubectl explain ns
+  141  clear
+  142  kubectl explain ns.spec
+  143  kubectl explain pod
+  144  clear
+  145  kubectl explain pod.spec
+  146  clear
+  147  kubectl explain pod.spec.containers
   148  clear
-  149  vi pod.yaml
-  150  kubectl apply -f pod.yaml -n=rajesh
-  151  kubectl get pods -n=rajesh --show-labeles
-  152  kubectl get pods -n=rajesh --show-labels
-  153  kubectl delete -f pod.yaml -n=rajesh
-  154  history
+  149  history
 
-============================
-WORKSTATION - 13.233.116.86
-User - ec2-user
+================================
 
-=======================================
-how to show all the fields of all objects
-
- 169  clear
-  170  kubectl explain pods
-  171  kubectl explain pods.spec
-  172  kubectl explain pods.spec.containers
-
-=======================================
-How to use PODS?
+How to consume PODS?	
+	GO INSIDE A POD - POSSIBLE?
+	exec
+	attach	
+	
+	Accessing a pod usin http:
+	cp
+	logs
 
 
- 166  kubectl get pods -n=rajesh
-  167  clear
-  168  kubectl
+kubectl cp pod.yaml hello-pod:/tmp/ -n=rajesh
+
+
+ 151  kubectl get pods
+  152  kubectl get pods -n=rajesh
+  153  kubectl delete pod hello-pod
+  154  clear
+  155  ls
+  156  kubectl get pods -n=rajesh
+  157  kubectl edit pod hello-pod -n=rajesh
+  158  clear
+  159  ls
+  160  clear
+  161  kube get pods -n=rajesh -o wide
+  162  kubectl get pods -n=rajesh -o wide
+  163  curl http://10.44.0.2
+  164  clear
+  165  kubectl edit pod hello-pod -n=rajesh
+  166  kubectl get pods -n=rajesh
+  167  kubectl get pods -n=rajesh -o wide
+  168  curl http://10.44.0.2
   169  clear
-  170  kubectl explain pods
-  171  kubectl explain pods.spec
-  172  kubectl explain pods.spec.containers
-  173  history
+  170  kubectl get pods
+  171  kubectl
+  172  clear
+  173  kubectl
   174  clear
-  175  kubectl get pods -n=rajesh
-  176  kubectl get pods -n=rajesh -o wide
-  177  curl http://10.44.0.12
-  178  clear
-  179  kubectl get pods -n=rajesh
-  180  kubectl logs hello-pod  -n=rajesh
-  181  curl http://10.44.0.12
+  175  kubectl get pods -o wide -n=rajesh
+  176  kubectl exec -it hello-pod /bin/bash
+  177  kubectl exec -it hello-pod /bin/bash -n=rajesh
+  178  kubectl exec -h
+  179  clear
+  180  kubectl attach hello-pod
+  181  kubectl attach hello-pod -n=rajesh
   182  clear
-  183  kubectl logs hello-pod  -n=rajesh
-  184  kubectl exec -it hello-pod /bin/bash
-  185  clear
-  186  kubectl exec -it hello-pod /bin/bash -n=rajesh
-  187  kubectl attach hello-pod  -n=rajesh
-  188  clear
-  189  kubectl
-  190  clear
-  191  kubectl describe pod hello-pod -n=rajesh
-  192  kubectl
+  183  kubectl get pods -o wide -n=rajesh
+  184  kubectl logs hello-pod
+  185  kubectl logs pod hello-pod
+  186  kubectl logs pod hello-pod -n=rajesh
+  187  kubectl logs hello-pod -n=rajesh
+  188  ls
+  189  clear
+  190  ls
+  191  kubectl cp pod.yaml hell-pod -n=rajesh
+  192  kubectl cp -h
   193  clear
-  194  ls
-  195  kubectl cp -h
-  196  clear
-  197  ls
-  198  touch devopsschool.txt
-  199  kubectl cp devopsschool.txt hello-pod:/opt
-  200  kubectl cp devopsschool.txt hello-pod:/opt -n=rajesh
-  201  kubectl exec hello-pod ls /opt -n=rajesh
-
-
-=======================================
+  194  kubectl cp pod.yaml hello-pod:/tmp/ -n=rajesh
+  195  kubectl exec hello-pod ls /tmp
+  196  kubectl exec hello-pod ls /tmp -n=rajesh
+======================================================
 ReplicationController
 =============================
-Image
-scmgalaxy/nginx-devopsschoolv1
-scmgalaxy/nginx-devopsschoolv2
+N num of PODS.
+Replication - It would replicate a POD to many
+Controler - It control a desire and actual.
 
+	CRUD
+	----------------------
+	CREATE 	
+		create
+		apply
+
+	READ
+		get
+		describe
+	UPDATE
+		edit
+		apply
+
+	DELETE
+		delete
 
 apiVersion: v1
 kind: ReplicationController
@@ -494,40 +234,397 @@ spec:
     spec:
       containers:
       - name: hello-ctr
-        image: scmgalaxy/nginx-devopsschoolv1
+        image: nginx
         ports:
         - containerPort: 80
 
+ 43  kubectl get rc
+   44  kubectl get rc -n=rajesh
+   45  kubectl get pods -n=rajesh
+   46  kubectl delete pods hello-pod -n=rajesh
+   47  clear
+   48  kubectl get pods -n=rajesh
+   49  kubectl get rc -n=rajesh
+   50  ls
+   51  cd rajesh
+   52  ls
+   53  vi rc.yaml
+   54  clear
+   55  kubeclt create -f rc.yaml -n=rajesh
+   56  kubectl create -f rc.yaml -n=rajesh
+   57  kubectl get rc -n=rajesh
+   58  kubectl get pod -n=rajesh
+   59  kubectl edit rc hello-rc -n=rajesh
+   60  kubectl get pod -n=rajesh
+   61  clear
+   62  kubectl get pod -n=rajesh
+   63  kubectl edit rc hello-rc -n=rajesh
+   64  kubectl get pod -n=rajesh
+   65  kubectl edit rc hello-rc -n=rajesh
+   66  clear
+   67  kubectl get pod -n=rajesh
+   68  kubectl delete pod hello-rc-x5s5w -n=rajesh
+   69  kubectl get pod -n=rajesh
+   70  clear
+   71  kubectl get pod -n=rajesh
+   72  kubectl delete pod hello-rc-p729l -n=rajesh
+   73  kubectl get pod -n=rajesh
+============================================================
 
-Replication  --> ONE POD TO MANY
- 219  kubectl create -f rc.yaml -n=rajesh
-  220  kubectl get rc -n=rajesh
-  221  kubectl get pods -n=rajesh
-  222* vi rc.yaml
-  223  kubectl apply -f rc.yaml -n=rajesh
-  224  kubectl get pods -n=rajesh
-  225  clear
-  226  kubectl get pods -n=rajesh
-  227  clear
-  228  kubectl get pods -n=rajesh
-  229  clear
-  230  kubectl get pods -n=rajesh
-  231  kubectl edit rc hello-rc -n=rajesh
-  232  kubectl get pods -n=rajesh
-  233  clear
-  234  kubectl get pods -n=rajesh
+kubectl taint node ip-172-31-25-163.ap-south-1.compute.internal node-
+
+role.kubernetes.io/master:NoSchedule-
+==============================================================
+
+Deployment
+==========================
+Replication
+Controller	
+Rollout
+versioning
+Rollback
+
+kubectl delete pod --grace-period=0 --force
 
 
-Controller --> DESIRE NUMBER MUST BE ACtUAL NUM
+Image
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+kubectl scale --replicas=100 deployment/my-dep -n=rajesh
+kubectl scale --replicas=5 deployment/my-dep -n=rajesh
+
+ 682  kubectl create deployment -h
+  683  clear
+  684*
+  685  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+  686  kubectl delete [ec2-user@ip-172-31-25-163 ~]$ kubectl create deployment my-dep --
+
+image=scmgalaxy/nginx-devopsschoolv1
+  687  kubectl delete deployment my-dep
+  688  clear
+  689  kubectl delete [ec2-user@ip-172-31-25-163 ~]$ kubectl create deployment my-dep --
+
+image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  690  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  691  ls
+  692  kubectl get deploy -n=rajesh
+  693  kubectl edit deploy my-dep -n=rajesh
+  694  kubectl get pod -n=rajesh
+  695  clear
+  696  kubectl get pod -n=rajesh
+  697  kubectl
+  698  clear
+  699  kubectl scale -h
+  700  clear
+  701  kubectl edit deploy my-dep -n=rajesh
+  702  kubectl get deploy -n=rajesh
+  703  clear
+  704  kubectl scale --replicas=100 deployment/my-dep
+  705  clear
+  706  kubectl scale --replicas=100 deployment/my-dep -n=rajesh
+  707  kubectl get deploy -n=rajesh
+  708  clear
+  709  kubectl get pods -n=rajesh
+  710  clear
+  711  ls
+  712  kubectl get pods -n=rajesh
+  713  clear
+  714  kubectl get pods -n=rajesh
+  715  clear
+  716  kubectl get pods -n=rajesh -o wide
+  717  clear
+  718  kubectl get pods -n=rajesh -o wide
+  719  clear
+  720  kubectl get deploy -n=rajesh
+  721  clear
+  722  kubectl get deploy -n=rajesh
+  723  clear
+  724  kubectl get deploy -n=rajesh
+  725  clear
+  726  kubectl get deploy -n=rajesh
+  727  watch kubectl get deploy -n=rajesh
+  728  kubectl scale --replicas=5 deployment/my-dep -n=rajesh
+  729  watch kubectl get deploy -n=rajesh
+==============================================================
+kubelet
 
 
-  237  kubectl get pods -n=rajesh
-  238  kubectl delete pod hello-rc-qr5rp -n=rajesh
-  239  kubectl get pods -n=rajesh
-  240  history
+
+
+Image
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+
+kubectl rollout history deployment/my-dep -n=rajesh
+
+kubectl rollout undo deployment/my-dep --to-revision=1 -n=rajesh 
+
+kubectl rollout status deployment/my-dep -n=rajesh
+
+
+       
+ 750  kubectl rollout -h
+  751  clear
+  752  kubectl undo -h
+  753  clear
+  754  kubectl rollout undo -h
+  755  clear
+  756  kubectl rollout -h
+  757  clwar
+  758  clear
+  759  kubectl get deploy -n=rajesh
+  760  curl http://10.44.0.4
+  761  kubectl edit deploy my-dep -n=rajesh
+  762  kubectl rollout history deployment/my-dep -n=rajesh
+  763  kubectl edit deploy my-dep -n=rajesh
+  764  clear
+  765  kubectl rollout status deployment/my-dep -n=rajesh
+  766  kubectl get pods -n=rajesh -o wide
+  767  clear
+  768  curl http://10.44.0.6
+  769  kubectl rollout status deployment/my-dep -n=rajesh
+  770  kubectl rollout history deployment/my-dep -n=rajesh
+  771  clear
+  772  kubectl rollout undo deployment/my-dep --to-revision=1 -n=rajesh
+  773  kubectl rollout status deployment/my-dep -n=rajesh
+  774  kubectl rollout history deployment/my-dep -n=rajesh
+  775  kubectl get pods -n=rajesh -o wide
+  776  clear
+  777  curl http://10.44.0.5
+  778  clear
+  779  history
+
+
+ 778  clear
+  779  history
+  780  clear
+  781  kubectl get deploy -n=rajesh
+  782  kubectl describe deploy my-dep -n=rajesh
+  783  clear
+  784  kubectl get deploy -n=rajesh
+  785  kubectl get deploy my-dep -n=rajesh -o yaml
+  786  clear
+  787  kubectl get deploy my-dep -n=rajesh -o yaml --export
+  788  clear
+  789  kubectl get deploy my-dep -n=rajesh -o yaml --export >> rajesh.yaml
+  790  more rajesh.yaml
+  791  history
+
+
+==========================================================
+==========================================================
+
+Services
+====================================
+SCOPE OF THE SERVICE
+=========================
+		CLUSTORIP - Default
+		NodePort(Default CLUSTORIP)
+		LoadBalancer(CLUSTORIP -> NodePort) 
+	
+CLUSTORIP - Default
+kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh
+kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=NodePort --name=node
+
+kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=LoadBalancer --name=elbb1
 
 
 
+
+ 793  kubectl get deploy -n=rajesh
+  794  kubectl
+  795  clear
+  796  kubectl expose -h
+  797  clear
+  798  kubectl get deploy -n=rajesh
+  799  kubectl get pod -n=rajesh -o wide
+  800  clear
+  801  curl http://10.32.0.43
+  802  clear
+  803  kubectl get svc -n=rajesh
+  804  kubectl expose deploy my-dep --port=80 --target-port=8000
+  805  kubectl get svc -n=rajesh
+  806  kubectl
+  807  clear
+  808  kubectl config
+  809  clear
+  810  c
+  811  clear
+  812  kubectl expose deploy my-dep --port=80 --target-port=8000 -n=rajesh
+  813  kubectl get svc -n=rajesh
+  814  curl http://10.101.115.253
+  815  kubectl describe svc my-dep -n=rajesh
+  816  clear
+  817  ls
+  818  cd rajesh
+  819  ls
+  820  kubectl describe svc my-dep -n=rajesh
+  821  ls
+  822  kubectl apply -f pod.yaml -n=rajesh
+  823  clear
+  824  kubectl get pods
+  825  clear
+  826  kubectl get pods -n=rajesh
+  827  kubectl edit deploy my-dep -n=rajesh
+  828  clear
+  829  kubectl edit deploy my-dep -n=rajesh
+  830  clear
+  831  kubectl get pods -n=rajesh
+  832  kubectl describe svc my-dep -n=rajesh
+  833  clear
+  834  kubectl describe svc my-dep -n=rajesh
+  835  clear
+  836  ls
+  837  kubectl get svc
+  838  curl http://10.97.77.177
+  839  curl http://10.97.77.177:8000
+  840  kubectl describe svc my-dep -n=rajesh
+  841  c
+  842  eark
+  843  clear
+  844  curl http://10.32.0.43:8000
+  845  kubectl edit svc my-dep -n=rajesh
+  846  clear
+  847  curl http://10.32.0.43:8000
+  848  kubectl describe svc my-dep -n=rajesh
+  849  curl http://10.32.0.43:80
+  850  curl http://10.101.115.253:80808
+  851  curl http://10.101.115.253:8000
+  852  clear
+  853  curl http://10.101.115.253:8000
+  854  kubectl get svc -n=rajesh
+  855  kubectl get svc -n=rajesh --show-labels
+  856  kubectl get pod -n=rajesh --show-labels
+  857  kubectl describe svc my-dep -n=rajesh
+  858  clear
+  859  kubectl get svc -n=rajesh --show-labels
+  860  kubectl describe svc my-dep -n=rajesh
+  861  kubectl get pod -n=rajesh --show-labels
+  862  clear
+  863  kubectl edit svc my-dep -n=rajesh
+  864  clear
+  865  kubectl describe svc my-dep -n=rajesh
+  866  clear
+  867  ls
+  868  kubectl get svc -n=rajesh --show-labels
+  869  curl http://10.101.115.253:8000
+  870  clear
+  871  kubectl get pod
+  872  clear
+  873  kubectl get pod -n=rajesh
+  874  kubectl get pod -n=rajesh --show-lables
+  875  kubectl get pod -n=rajesh --show-labels
+  876  kubectl lable pod hello-pod app=my-dep1
+  877  clear
+  878  kubectl label pod hello-pod app=my-dep1
+  879  kubectl label pod hello-pod app=my-dep1 -n=rajesh
+  880  kubectl label pod hello-pod app=my-dep1 -n=rajesh --overwrite
+  881  clear
+  882  kubectl get pod -n=rajesh --show-lables
+  883  kubectl get pod -n=rajesh --show-labels
+  884  kubectl get svc -n=rajesh
+  885  kubectl describe svc my-dep -n=rajesh
+  886  clear
+  887  kubectl get svc -n=rajesh
+  888  curl http://10.101.115.253
+  889  curl http://10.101.115.253:8000
+  890  clear
+  891  kubectl label pod hello-pod app=my-dep -n=rajesh --overwrite
+  892  kubectl describe svc my-dep -n=rajesh
+  893  kubectl edit svc my-dep -n=rajesh
+  894  clear
+  895  kubectl describe svc my-dep -n=rajesh
+  896  kubectl edit svc my-dep -n=rajesh
+  897  kubectl describe svc my-dep -n=rajesh
+  898  clear
+  899  kubectl get svc -n=rajesh
+  900  curl http://10.101.115.253
+  901  curl http://10.101.115.253:8000
+  902  clear
+  903  curl http://10.101.115.253:8000
+  904  clear
+  905  curl http://10.101.115.253:8000
+  906  clear
+  907  curl http://10.101.115.253:8000\
+  908  curl http://10.101.115.253:8000
+  909  clear
+  910  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=NodePort
+  911  clear
+  912  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=NodePort --name=node
+  913  kubectl get svc -n=rajesh
+  914  curl http://10.104.144.3:8000
+  915  clear
+  916  ip a
+  917  clear
+  918  kubectl get svc -n=rajesh
+  919  clear
+  920  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=NodePort --name=elb
+  921  kubectl get svc -n=rajesh
+  922  clear
+  923  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=Loadbalancer --
+
+name=elb
+  924  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=Loadbalancer --
+
+name=elbb1
+  925  clear
+  926  kubectl expose deploy my-dep --port=8000 --target-port=80 -n=rajesh --type=LoadBalancer --
+
+name=elbb1
+  927  kubectl get svc -n=rajesh
+  928  clear
+  929  curl http://http://raj-930683150.ap-south-1.elb.amazonaws.com/
+  930  curl http://raj-930683150.ap-south-1.elb.amazonaws.com/
+  931  clear
+  932  curl http://raj-930683150.ap-south-1.elb.amazonaws.com/
+  933  cler
+  934  clear
+  935  history
+
+=========================================
+QA 
+WEB - nginx vs APAChe VS IIS
+=========================================================
+Docker
+	Dcokerfile
+		Dockercompose
+				kubernetes
+					Compute
+					Service
+					NETWORK
+					Storage
+					Security
+						ServiceMesh
+								ServiceRegistry
+										
+https://www.devopsschool.com/blog/understanding-the-tools-sets-in-kubernetes-ecosystem/
+=========================================================================================
+
+
+Resources
+===================
+Video	- https://www.youtube.com/TheDevOpsSchool
+Slides  - https://www.youtube.com/TheDevOpsSchool
+Notes - https://github.com/devopsschool-training-notes/docker-kubernetes-softwareag-malaysia
+Sample Programs - https://github.com/orgs/devopsschool-sample-programs/dashboard
+PDF - https://www.devopsschool.com/pdf/
+Tutorials - https://www.devopsschool.com/tutorial/
+Blogs
+	https://www.devopsschool.com/blog/?s=docker
+	https://www.devopsschool.com/blog/?s=kubernetes
+Recordings
+	https://www.devopsschool.com/lms
+===================================================
+Off kub Doc page.
+
+
+How to reach out to trainer ?
+http://rajeshkumar.xyz/
+
+
+===================
 
 
 
